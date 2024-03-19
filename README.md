@@ -57,4 +57,9 @@ catkin_make
 ```
 Clone and build the packages:
 ```bash
-mkdir -p ~/rover_ws/src
+cd ~/rover_ws/src
+git clone https://github.com/dongjineee/rover_gazebo.git
+cd ..
+catkin_make
+```
+
