@@ -63,4 +63,17 @@ cd ..
 catkin_make
 source devel/setup.bash
 ```
+## Usage - Visualisation
+
+### `rover_viz`
+
+This package includes launch and rviz configuration files for visualising the rover.
+
+To view the rover in rviz and manually control the joints, execute the following command:
+
+```bash
+roslaunch rover rover.launch
+```
+![image](https://github.com/dongjineee/rover_gazebo/assets/150753899/f49548d0-8ecb-4b25-8ce6-bd643bb90b1a)
+
 
