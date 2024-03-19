@@ -61,5 +61,6 @@ cd ~/rover_ws/src
 git clone https://github.com/dongjineee/rover_gazebo.git
 cd ..
 catkin_make
+source devel/setup.bash
 ```
 
