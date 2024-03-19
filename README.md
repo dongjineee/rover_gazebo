@@ -34,5 +34,7 @@ To fully utilize the capabilities of the rover simulation, the following ROS pac
 ## Installation
 
 ### Create and configure a workspace
+Source your ROS installation:
 ```bash
 source /opt/ros/noetic/setup.bash
+Source your ROS installation:
