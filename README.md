@@ -1,22 +1,19 @@
-# ROS packages for Curio - a Sawppy Rover
+# ROS packages for JPL Open Source Rover Gazebo Simulation
 
 ## Introduction
-This is a collection of ROS software packages to control a version of [Roger Chen's Sawppy Rover](https://github.com/roger-random/Sawppy_Rover). These packages are intended to help builders of Roger's Sawppy up and running on ROS while staying faithful to the original design using LX-16A servo motors. This presents some challenges with getting reliable odometry which we address with an encoder filter that identifies when the encoder position is outside its valid range.
+This package suite is designed to bring the JPL Open Source Rover to life in a simulated environment using Gazebo. Inspired by [NASA JPL's Open Source Rover project](https://github.com/nasa-jpl/open-source-rover), these packages allow for visualization and control in a Gazebo simulation, offering a versatile platform for educational purposes and beyond.
 
 ## Overview
-There are a number of ROS packages to control the rover, visualise it in rviz, and simulate it in Gazebo.
+The following ROS packages are included to visualize the rover in rviz and simulate its operations in Gazebo:
 
-- `ackermann_drive_controller`: a 6 wheel, 4 steering controller consistent with the `ros_control` framework.
-- `curio_base`: hardware drivers and a ROS base controller node subscribing to `geometry_msgs/Twist` on `/cmd_vel`.
-- `curio_bringup`: a set of launch files for bringing up the rover nodes.
-- `curio_control`: configuration and launch files using the `ros_control` framework.
-- `curio_description`: a URDF/xacro model for the robot using STL files from the Sawppy CAD model.
-- `curio_gazebo`: configuration and launch files for spawning the rover in Gazebo with ROS control.
-- `curio_navigation`: configuration and launch files for the ROS navigation stack.
-- `curio_teleop`: a teleop node for interpreting PWM signals from a RC unit and publishing to `/cmd_vel`.
-- `curio_viz`: configuration and launch files for loading the robot model into `rviz`.
+- `rover.launch`: Launches a package for observing the rover in rviz, providing real-time visualization of its movements and sensor data.
+- `rover_gazebo.launch`: Deploys the rover within the Gazebo simulation environment, creating a virtual testing ground for rover operations.
+- `controller.launch`: Initializes the control system for the rover, setting the stage for user interaction through various input devices.
+- `rover_teleop_keyboard.launch`: A package that allows the user to maneuver the rover using keyboard inputs, ensuring precise and responsive control.
+- `rover_teleop_xbox.launch`: Enables control of the rover via an Xbox controller, offering an intuitive and ergonomic option for navigation and operation.
 
-For more detail see the sections below.
+Each package is crafted to enhance the rover simulation experience, providing users with comprehensive tools for exploration and learning.
+
 
 ## Installation
 
