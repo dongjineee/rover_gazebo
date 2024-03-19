@@ -31,6 +31,15 @@ To fully utilize the capabilities of the rover simulation, the following ROS pac
 - `diagnostic_updater`
 - `ros_control`
 
+example:
+```bash
+sudo apt-get install ros-noetic-ros-controllers
+sudo apt-get install ros-noetic-diagnostic-updater
+sudo apt-get install ros-noetic-robot-state-publisher
+sudo apt-get install ros-noetic-joint-state-publisher
+sudo apt-get install ros-noetic-gazebo-ros-pkgs ros-noetic-gazebo-ros-control
+```
+
 ## Installation
 
 ### Create and configure a workspace
@@ -43,4 +52,9 @@ Create a catkin workspace:
 mkdir -p ~/rover_ws/src
 cd ~/rover_ws/src
 catkin_init_workspace
+cd ..
+catkin_make
 ```
+Clone and build the packages:
+```bash
+mkdir -p ~/rover_ws/src
