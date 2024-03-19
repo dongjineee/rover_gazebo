@@ -38,4 +38,9 @@ Source your ROS installation:
 ```bash
 source /opt/ros/noetic/setup.bash
 ```
-Source your ROS installation:
+Create a catkin workspace:
+```bash
+mkdir -p ~/rover_ws/src
+cd ~/rover_ws/src
+catkin_init_workspace
+```
