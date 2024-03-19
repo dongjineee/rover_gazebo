@@ -90,6 +90,8 @@ roslaunch rover rover_gazebo.launch
 ```
 ![image](https://github.com/dongjineee/rover_gazebo/assets/150753899/481e0aaf-6336-45e5-b138-49ee7df5e509)
 
+### `rover_control`
+
 To launch the simulation along with the capability to manually control the joints, use the command:
 ```bash
 roslaunch rover controller.launch
