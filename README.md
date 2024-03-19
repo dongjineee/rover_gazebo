@@ -19,12 +19,14 @@ The following ROS packages are included to visualize the rover in rviz and simul
 - ROS Distribution: Noetic
 - Gazebo Version: 11.14.0
 
-### ROS 필요 패키지
-- `rviz`
-- 'urdf'
-- 'xacro'
-- 'gazebo'
-- 'robot-state-publisher'
-- 'joint-state-publisher'
-- 'diagnostic-updater' # xbox controller
-- 'ros-controllers'
+### Required ROS Packages
+To fully utilize the capabilities of the rover simulation, the following ROS packages are necessary:
+
+- `rviz`: For 3D robotic visualization.
+- `urdf`: To parse URDF (Unified Robot Description Format) files.
+- `xacro`: An XML macro language for generating URDF files.
+- `gazebo_ros`: For integrating the Gazebo simulator with ROS.
+- `robot_state_publisher`: To publish the state of the robot to the rest of the ROS ecosystem.
+- `joint_state_publisher`: For publishing joint state values for the robot.
+- `diagnostic_updater`: Provides a standardized interface for diagnostic information (used with the Xbox controller).
+- `ros_control` and `ros_controllers`: To implement and manage robot controllers with ROS.
