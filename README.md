@@ -30,3 +30,9 @@ To fully utilize the capabilities of the rover simulation, the following ROS pac
 - `joint_state_publisher`
 - `diagnostic_updater`
 - `ros_control`
+
+## Installation
+
+### Create and configure a workspace
+```bash
+source /opt/ros/noetic/setup.bash
