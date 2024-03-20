@@ -103,7 +103,7 @@ roslaunch rover rover_teleop_keyboard.launch
 To execute this package, first clone the repository using the following command:
 
 ```bash
-git clone https://github.com/methylDragon/teleop_twist_keyboard_cpp/tree/master
+git clone https://github.com/methylDragon/teleop_twist_keyboard_cpp.git
 ```
 xbox controller
 ```bash
