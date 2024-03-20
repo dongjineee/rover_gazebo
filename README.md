@@ -112,3 +112,5 @@ roslaunch rover rover_teleop_xbox.launch
 ## TODO
 
 ### `moon_world`
+
+![image](https://github.com/dongjineee/rover_gazebo/assets/150753899/38ff8368-40e7-4b10-9089-e7ec4b44a5f5)
