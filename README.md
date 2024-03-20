@@ -122,3 +122,4 @@ roslaunch rover moon_world.launch
 ## Note
 - When you run the Gazebo and control launch files, you may encounter a message stating `No p gain specified for pid`. This message can safely be ignored. The reason is that the `*_wheel_joint_*` entities are intended to function as servos.
 - The control does not have specified linear and angular velocities. Therefore, it's necessary to add the maximum and minimum values for `cmd_vel` in the `motor_controller.cpp`.
+- There are two types of odometry topics available: `gt_odometry`, which is based on ground truth data, and another that derives from the position of the `wheel_joint`.
