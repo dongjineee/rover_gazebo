@@ -1,0 +1,54 @@
+<launch>
+  <env name="GAZEBO_MODEL_PATH" value="$GAZEBO_MODEL_PATH:$(find rover)/worlds/models" />
+  <env name="GAZEBO_RESOURCE_PATH" value="$GAZEBO_RESOURCE_PATH:$(find rover)/worlds/models" />
+
+  <!-- 시뮬레이터에서 모델과 리소스 파일 로드할 때 필요  -->
+
+  <arg name="paused" default="false"/> <!--시뮬레이션 시작시 일시 정지 상태로 설정할 지-->
+  <arg name="use_sim_time" default="true"/> <!--시뮬레이션 시간을 사용할지 여부 -->
+  <arg name="gui" default="true"/> <!--gui 표시 할지 여부 -->
+  <arg name="headless" default="false"/> <!--headless 모드로 시뮬레이션 시작할지 여부, headless : ui 없이 시뮬레이션을 시작하는 모드-->
+  <arg name="debug" default="false"/> <!--debug 모드로 시뮬레이션 시작할지 여부, debug : 문제를 추적하는 모드 -->
+  <arg name="verbose" default="true"/> <!--상세 출력 메시지 출력 여부-->
+  <arg name="world" default="$(find rover)/worlds/moon.world" /> <!--시뮬레이션에 사용할 world-->
+  <arg name="urdf" default="$(find rover)/urdf/rover.urdf.xacro" /> <!--시뮬레이션에 사용할 urdf-->
+
+  <param name="robot_description" command="$(find xacro)/xacro $(arg urdf)" />
+
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model rover" />
+  
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+
+  <!-- set use_sim_time flag -->
+  <group if="$(arg use_sim_time)">
+    <param name="/use_sim_time" value="true" />
+  </group>
+
+  <!-- set command arguments -->
+  <arg unless="$(arg paused)" name="command_arg1" value=""/>
+  <arg     if="$(arg paused)" name="command_arg1" value="-u"/>
+  <arg unless="$(arg headless)" name="command_arg2" value=""/>
+  <arg     if="$(arg headless)" name="command_arg2" value="-r"/>
+  <arg unless="$(arg verbose)" name="command_arg3" value=""/>
+  <arg     if="$(arg verbose)" name="command_arg3" value="--verbose"/>
+  <arg unless="$(arg debug)" name="script_type" value="gzserver"/>
+  <arg     if="$(arg debug)" name="script_type" value="debug"/>
+
+  <!-- headless, debug, verbose 에서 사용하는 파라미터들 -->
+
+  <!-- add our own models directory to models path -->
+  <env name="GAZEBO_MODEL_PATH" value="$(find rover)/worlds/models:GAZEBO_MODEL_PATH" />
+  <env name="GAZEBO_RESOURCE_PATH" value="$(find rover)/worlds/models:$GAZEBO_RESOURCE_PATH" />
+
+  <!-- start gazebo server-->
+  <node name="gazebo" pkg="gazebo_ros" type="$(arg script_type)" respawn="false" output="screen"
+	args="$(arg command_arg1) $(arg command_arg2) $(arg command_arg3) $(arg world)" />
+	
+  <!-- start gazebo client -->
+  <group if="$(arg gui)">
+    <node name="gazebo_gui" pkg="gazebo_ros" type="gzclient" respawn="false" output="screen"/>
+  </group>
+
+</launch>
+
