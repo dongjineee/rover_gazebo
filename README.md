@@ -120,5 +120,5 @@ roslaunch rover moon_world.launch
 ![image](https://github.com/dongjineee/rover_gazebo/assets/150753899/900263f7-dad4-45c1-9c6b-41af9d975a6f)
 
 ## Note
-- When you run the Gazebo and control launch files, you may encounter a message stating `No p gain specified for pid`. This message can safely be ignored. The reason is that the `*_wheel_joint_*` entities are intended to function as servos, and therefore do not require PID gain settings.
-
+- When you run the Gazebo and control launch files, you may encounter a message stating `No p gain specified for pid`. This message can safely be ignored. The reason is that the `*_wheel_joint_*` entities are intended to function as servos.
+- The control does not have specified linear and angular velocities. Therefore, it's necessary to add the maximum and minimum values for `cmd_vel` in the `motor_controller.cpp`.
