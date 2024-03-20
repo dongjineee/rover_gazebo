@@ -109,9 +109,11 @@ xbox controller
 ```bash
 roslaunch rover rover_teleop_xbox.launch
 ```
-## TODO
 
 ### `moon_world`
+
+places the rover in a Moon terrain model sourced from https://github.com/MobileRobots/amr-ros-config/tree/master/gazebo
+
 
 ![image](https://github.com/dongjineee/rover_gazebo/assets/150753899/900263f7-dad4-45c1-9c6b-41af9d975a6f)
 
