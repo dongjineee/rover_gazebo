@@ -6,6 +6,8 @@
 #include "sensor_msgs/JointState.h"
 #include <tf/tf.h>
 #include "nav_msgs/Odometry.h"
+#include <tf2_ros/transform_broadcaster.h>
+
 
 class Controller
 {
@@ -26,7 +28,7 @@ private:
     ros::Publisher Motor_ML_CON_pub;
     ros::Publisher Motor_MR_CON_pub;
 
-    ros::Publisher Odom_pub;
+    ros::Publisher odom_pub;
 
     ros::Subscriber sub;
     ros::Subscriber imu_sub;
@@ -44,7 +46,7 @@ private:
     std_msgs::Float64 ML_Wheel_Velocity;
     std_msgs::Float64 MR_Wheel_Velocity;
 
-    nav_msgs::Odometry Odom;
+    nav_msgs::Odometry odom_;
 
     double fl_vel, fr_vel, ml_vel, mr_vel, rl_vel, rr_vel;
     double ang_cur[6];
@@ -94,7 +96,7 @@ public:
         Motor_ML_CON_pub = nh.advertise<std_msgs::Float64>("rover_motor_ml_controller/command", 2);
         Motor_MR_CON_pub = nh.advertise<std_msgs::Float64>("rover_motor_mr_controller/command", 2);
 
-        Odom_pub = nh.advertise<nav_msgs::Odometry>("odom", 2);
+        odom_pub = nh.advertise<nav_msgs::Odometry>("/odom", 2);
 
         sub = nh.subscribe("cmd_vel", 5, &Controller::msgCallback, this);
         joint_sub = nh_joint.subscribe("joint_states", 5, &Controller::jointCallback, this);
@@ -310,22 +312,37 @@ public:
 
 
         // Update Odometry message
-        Odom.header.stamp = ros::Time::now();
-        Odom.header.frame_id = "odom";
+        odom_.header.stamp = ros::Time::now();
+        odom_.header.frame_id = "odom";
 
-        Odom.pose.pose.position.x = x_postion;
-        Odom.pose.pose.position.y = y_postion;
+        odom_.pose.pose.position.x = x_postion;
+        odom_.pose.pose.position.y = y_postion;
 
         // Assuming angle is in radians
         tf::Quaternion quaternion;
         quaternion.setRPY(0, 0, angle);
 
-        Odom.pose.pose.orientation.x = quaternion.x();
-        Odom.pose.pose.orientation.y = quaternion.y();
-        Odom.pose.pose.orientation.z = quaternion.z();
-        Odom.pose.pose.orientation.w = quaternion.w();
+        odom_.pose.pose.orientation.x = quaternion.x();
+        odom_.pose.pose.orientation.y = quaternion.y();
+        odom_.pose.pose.orientation.z = quaternion.z();
+        odom_.pose.pose.orientation.w = quaternion.w();
 
-        Odom_pub.publish(Odom);
+
+        static tf2_ros::TransformBroadcaster br;
+        geometry_msgs::TransformStamped transformStamped;
+
+        transformStamped.header.stamp = ros::Time::now();
+        transformStamped.header.frame_id = "odom"; 
+        transformStamped.child_frame_id = "base_footprint"; 
+
+        transformStamped.transform.translation.x = odom_.pose.pose.position.x;
+        transformStamped.transform.translation.y = odom_.pose.pose.position.y;
+        transformStamped.transform.translation.z = odom_.pose.pose.position.z;
+        
+        transformStamped.transform.rotation = odom_.pose.pose.orientation;
+        br.sendTransform(transformStamped);
+        
+        odom_pub.publish(odom_);
 
        // printf("x_pos : %f\ty_pos : %f\n", x_postion,y_postion);
     }

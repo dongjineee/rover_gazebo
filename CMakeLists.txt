@@ -14,7 +14,8 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   tf
   nav_msgs
-)
+  tf2_ros
+  )
 
 ## Generate messages in the 'msg' folder
  add_message_files(
