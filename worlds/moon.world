@@ -8,7 +8,7 @@
     <!-- DEM of moon surface -->
     <include>
 
-      <uri>model://apollo16_landing_site_1000x1000</uri>
+      <uri>model://apollo17_landing_site_1000x1000</uri>
     </include>
     <!-- Own physics settings to speed up simulation -->
     <physics type='ode'>
