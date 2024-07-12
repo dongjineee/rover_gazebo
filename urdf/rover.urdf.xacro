@@ -48,6 +48,10 @@
 
     </link>
 
+    <gazebo reference="base_link">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    
     <joint name="base_joint" type="fixed">
         <parent link="base_footprint"/>
         <origin rpy="0 0 0" xyz="0 0 0.273745"/>
@@ -396,6 +400,11 @@
 
         </link>
 
+        <gazebo reference="front_wheel_link_${prefix}">
+            <material>Gazebo/DarkGrey</material>
+        </gazebo>
+
+
         <joint name="front_wheel_joint_${prefix}" type="continuous">
             <parent link="front_wheel_link_${prefix_1}"/>
             <origin rpy="0 0 0" xyz="0.006231 ${dir*0.019544} -0.169991"/>
@@ -435,6 +444,10 @@
             </inertial>
         </link>
 
+       <gazebo reference="middle_wheel_link_${prefix}">
+            <material>Gazebo/DarkGrey</material>
+        </gazebo>
+        
         <joint name="middle_wheel_joint_${prefix}" type="continuous">
             <parent link="middle_wheel_link_${prefix_1}"/>
             <origin rpy="0 0 0" xyz="0.006691 ${dir*0.100382} 0.005425"/>
@@ -474,6 +487,10 @@
             </inertial>
         </link>
 
+       <gazebo reference="rear_wheel_link_${prefix}">
+            <material>Gazebo/DarkGrey</material>
+        </gazebo>
+        
         <joint name="rear_wheel_joint_${prefix}" type="continuous">
             <parent link="rear_wheel_link_${prefix_1}"/>
             <origin rpy="0 0 0" xyz="-0.000203 ${dir*0.008131} -0.160678"/>
