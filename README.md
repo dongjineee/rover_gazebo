@@ -88,7 +88,7 @@ To launch the simulation along with the capability to manually control the joint
 ```bash
 roslaunch rover empty_world.launch
 ```
-![image](https://github.com/dongjineee/rover_gazebo/assets/150753899/481e0aaf-6336-45e5-b138-49ee7df5e509)
+![image](https://github.com/user-attachments/assets/9845fefb-05f0-4f72-816c-2ea3b2c1be4c)
 
 ### `rover_control`
 
@@ -118,7 +118,7 @@ export GAZEBO_MODEL_PATH=:${your_workspace}/src/rover_gazebo/worlds
 roslaunch rover rover_moon.launch
 ```
 
-![image](https://github.com/dongjineee/rover_gazebo/assets/150753899/900263f7-dad4-45c1-9c6b-41af9d975a6f)
+![image](https://github.com/user-attachments/assets/9623babb-42ea-42f3-9271-aa7383c7a26a)
 
 ## Note
 - When you run the Gazebo and control launch files, you may encounter a message stating `No p gain specified for pid`. This message can safely be ignored. The reason is that the `*_wheel_joint_*` entities are intended to function as servos.
