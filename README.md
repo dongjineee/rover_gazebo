@@ -114,7 +114,7 @@ roslaunch rover rover_teleop_xbox.launch
 
 places the rover in a Moon terrain model sourced from https://github.com/MobileRobots/amr-ros-config/tree/master/gazebo
 ```bash
-export GAZEBO_MODEL_PATH=:${your_workspace}/src/rover_gazebo/worlds
+export GAZEBO_MODEL_PATH=:${your_workspace_dir}/src/rover_gazebo/worlds
 roslaunch rover rover_moon.launch
 ```
 
