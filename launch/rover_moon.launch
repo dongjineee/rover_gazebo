@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <include file="$(find rover)/launch/moon.launch" />
+
+  <include file="$(find rover)/launch/spawn_rover.launch">
+  </include>
+
+</launch>

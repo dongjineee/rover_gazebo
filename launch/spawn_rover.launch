@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name="robot_namespace" default="/"/>
+
+  <arg name="x" default="0"/>
+  <arg name="y" default="0"/>
+  <arg name="z" default="2.5"/>
+  <arg name="yaw" default="0.0"/>
+
+  <rosparam file="$(find rover)/config/gazebo_pid_gains.yaml" command="load"/>
+  
+  <arg name="urdf" default="$(find rover)/urdf/rover.urdf.xacro" />
+  <param name="robot_description" command="$(find xacro)/xacro $(arg urdf)" />
+
+  <group ns="$(arg robot_namespace)">
+
+    <node name="spawn_rover_model" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x)
+              -y $(arg y)
+              -z $(arg z)
+              -Y $(arg yaw)
+              -unpause
+              -urdf
+              -param robot_description
+              -model rover
+              -robot_namespace $(arg robot_namespace)" />
+
+  </group>
+
+</launch>
+
