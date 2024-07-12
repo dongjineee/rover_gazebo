@@ -86,7 +86,7 @@ To launch the simulation along with the capability to manually control the joint
 
 
 ```bash
-roslaunch rover rover_gazebo.launch
+roslaunch rover empty_world.launch
 ```
 ![image](https://github.com/dongjineee/rover_gazebo/assets/150753899/481e0aaf-6336-45e5-b138-49ee7df5e509)
 
@@ -114,7 +114,8 @@ roslaunch rover rover_teleop_xbox.launch
 
 places the rover in a Moon terrain model sourced from https://github.com/MobileRobots/amr-ros-config/tree/master/gazebo
 ```bash
-roslaunch rover moon_world.launch
+export GAZEBO_MODEL_PATH=:${your_workspace}/src/rover_gazebo/worlds
+roslaunch rover rover_moon.launch
 ```
 
 ![image](https://github.com/dongjineee/rover_gazebo/assets/150753899/900263f7-dad4-45c1-9c6b-41af9d975a6f)
